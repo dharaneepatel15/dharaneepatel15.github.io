@@ -118,10 +118,6 @@ window.SITE = {
     }
   ],
 
-  // Also list your other public (non-fork) GitHub repos automatically under "More on GitHub".
-  showGithubRepos: true,
-  githubUser: "dharaneepatel15",
-  maxGithubRepos: 6,
 
   /* ---------- Skills ---------- */
   skills: [
