@@ -32,10 +32,33 @@ window.SITE = {
   },
 
   /* ---------- About ---------- */
+  /* Your story, told in chapters. Each chapter has a small label and a paragraph.
+     Add, remove, or reorder chapters freely. A plain "text in quotes" also works (no label). */
   about: [
-    "I'm a software engineer who likes turning messy real-world problems into robust, well-engineered systems. Most recently, at IBM, I owned the CPLEX-based optimization engine behind enterprise asset investment planning, where I raised average solution feasibility from roughly 60% to 90%.",
-    "Before that I spent over three years at Angel One building financial time-series pipelines, backtesting systems, and live-execution tools for quantitative investing. I started my career at Fxis.ai, delivering machine-learning and computer-vision solutions for document digitization.",
-    "Today I'm pursuing my Master's in Computer Science at Texas A&M University, focusing on Artificial Intelligence and Information Retrieval, with a growing interest in LLMs and retrieval-augmented generation."
+    {
+      label: "Where it started",
+      text: "I've always been drawn to the gap between a messy real-world problem and a clean system that actually solves it. That curiosity took shape while I studied Computer Engineering at L. D. College of Engineering in Ahmedabad, and it has been the thread through everything I've built since."
+    },
+    {
+      label: "Learning to build · Fxis.ai",
+      text: "My first role put me right in that gap. I built backend services in a microservices architecture and worked directly with clients to understand what they really needed, then delivered machine-learning and computer-vision solutions that turned scanned documents and images into usable data. It taught me that good engineering starts with listening, and it gave me my first taste of what ML can do in the real world."
+    },
+    {
+      label: "Raising the stakes · Angel One",
+      text: "At Angel One, the problems got bigger and the stakes got real. For more than three years I worked alongside financial analysts on quantitative investing. I re-architected high-volume time-series pipelines to run about 40% faster, and I built the systems behind strategy backtesting, portfolio evaluation, and live execution. I learned to write software where both speed and correctness matter, and to turn analysis into tools people rely on to make decisions."
+    },
+    {
+      label: "From data to decisions · IBM",
+      text: "At IBM I moved from analyzing data to making decisions with it. I owned the CPLEX-based optimization engine behind enterprise asset investment planning. That meant MILP and constraint models, where a plan either holds together or it doesn't. By tracking down constraint conflicts and production edge cases, I raised average solution feasibility from about 60% to 90%, and I learned to reason about systems rigorously, not just empirically."
+    },
+    {
+      label: "The next step · Texas A&M",
+      text: "Across seven years, one pattern kept repeating: the most valuable systems pair solid engineering with models that learn from data. That's what brought me to Texas A&M for a Master's in Computer Science, focused on Artificial Intelligence and Information Retrieval. I'm already building in that direction, for example with a retrieval-augmented research assistant that answers financial questions from earnings reports and cites its sources."
+    },
+    {
+      label: "Where I'm headed",
+      text: "I want to build AI systems people can trust in high-stakes settings, combining LLMs and retrieval, machine learning, and the rigor of optimization. I'm most excited by applied AI and ML engineering work, where ideas from research become reliable products that real people depend on."
+    }
   ],
 
   // Headline numbers shown under the About text. Delete this list (or leave it empty []) to hide them.
@@ -88,8 +111,43 @@ window.SITE = {
   ],
 
   /* ---------- Projects ----------
-     repo / demo: leave "" if there's no link.                         */
+     repo / demo: leave "" if there's no link.
+     status:     optional badge, e.g. "In progress". Remove it once the project is done.
+     highlights: optional bullet points shown under the description.
+                 Only add numbers you have actually measured.            */
   projects: [
+    {
+      title: "ToolScout: Tool Retrieval & Recommendation for AI Agents",
+      subtitle: "Texas A&M · CSCE 670 · Fall 2026",
+      status: "In progress",
+      description:
+        "A search engine that hands an LLM agent the top-k tools it needs from a catalog of 2,000+ MCP and API tools, instead of stuffing every tool into the prompt.",
+      highlights: [
+        "Hybrid retrieval: BM25 + dense embedding search over LLM-enriched tool descriptions, reranked with a cross-encoder.",
+        "Tool co-usage graph mined from agent runs, powering PageRank scores, item-based collaborative filtering, and SASRec next-tool prediction.",
+        "LambdaMART learning-to-rank model trained on labels from successful and failed agent runs, with ablations per signal.",
+        "Served as an MCP server (find_tools) behind open-weight Qwen3 agents on vLLM (TAMU HPC), evaluated on LiveMCPBench."
+      ],
+      tags: ["Python", "PyTorch", "LightGBM", "Qdrant", "vLLM", "MCP"],
+      repo: "",
+      demo: ""
+    },
+    {
+      title: "AI-Generated Receipt Fraud Detector",
+      subtitle: "Course project · Fall 2026",
+      status: "In progress",
+      description:
+        "A two-branch detector that flags AI-generated and AI-edited receipts by fusing image forensics with OCR-based consistency checks.",
+      highlights: [
+        "Fine-tuned vision transformer (ConvNeXt / ViT) with frequency features, fused with OCR arithmetic and tax-consistency checks.",
+        "Robustness test set built by printing, photographing, and compressing receipts, plus recapture augmentation for real phone uploads.",
+        "Benchmarked against TruFor, DocTamper, and a GPT-4o judge, including generalization to unseen image generators.",
+        "Fairness checks across US, Indian GST, and handwritten receipt styles, with a plain-language reason for every flag."
+      ],
+      tags: ["Python", "PyTorch", "ConvNeXt/ViT", "PaddleOCR", "scikit-learn"],
+      repo: "",
+      demo: ""
+    },
     {
       title: "LLM-Powered Financial Research Assistant",
       description:

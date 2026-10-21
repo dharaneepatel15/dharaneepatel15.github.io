@@ -38,7 +38,9 @@
   ].filter(Boolean).join("");
 
   /* ----- About + stats ----- */
-  $("aboutText").innerHTML = (S.about || []).map((p) => `<p>${esc(p)}</p>`).join("");
+  $("aboutText").innerHTML = (S.about || []).map((p) => typeof p === "string"
+    ? `<p>${esc(p)}</p>`
+    : `<div class="chapter reveal"><span class="chapter-label">${esc(p.label)}</span><p>${esc(p.text)}</p></div>`).join("");
   if (S.stats && S.stats.length) {
     $("stats").innerHTML = S.stats.map((s) => `<div class="stat"><b>${esc(s.value)}</b><span>${esc(s.label)}</span></div>`).join("");
   } else $("stats").remove();
@@ -61,10 +63,12 @@
 
   /* ----- Projects ----- */
   $("projectList").innerHTML = (S.projects || []).map((p) => `
-    <article class="card reveal">
+    <article class="card reveal${p.highlights && p.highlights.length ? " wide" : ""}">
+      ${p.status ? `<span class="status"><i></i>${esc(p.status)}</span>` : ""}
       <h3>${esc(p.title)}</h3>
       ${p.subtitle ? `<div class="sub">${esc(p.subtitle)}</div>` : ""}
       <p>${esc(p.description)}</p>
+      ${p.highlights && p.highlights.length ? `<ul class="highlights">${p.highlights.map((h) => `<li>${esc(h)}</li>`).join("")}</ul>` : ""}
       ${tags(p.tags, "accent")}
       ${p.repo || p.demo ? `<div class="card-links">
         ${p.repo ? `<a href="${esc(p.repo)}" ${ext}>View code →</a>` : ""}
@@ -133,6 +137,15 @@
       : matchMedia("(prefers-color-scheme: dark)").matches;
     root.dataset.theme = isDark ? "light" : "dark";
     try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+  });
+
+  /* ----- Glow that follows the cursor on cards ----- */
+  document.addEventListener("pointermove", (e) => {
+    const card = e.target.closest && e.target.closest(".card, .stat, .edu-item, .contact-item");
+    if (!card) return;
+    const r = card.getBoundingClientRect();
+    card.style.setProperty("--mx", `${e.clientX - r.left}px`);
+    card.style.setProperty("--my", `${e.clientY - r.top}px`);
   });
 
   /* ----- Reveal-on-scroll + active nav link ----- */
