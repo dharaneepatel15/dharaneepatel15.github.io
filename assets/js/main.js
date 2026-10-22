@@ -27,14 +27,14 @@
   const photo = $("photo");
   if (S.photo) { photo.src = S.photo; photo.alt = `Photo of ${S.name}`; } else photo.remove();
 
-  /* ----- Hero buttons ----- */
+  /* ----- Sidebar links ----- */
   const L = S.links || {};
   const primaryEmail = (L.emails || [])[0];
   $("heroLinks").innerHTML = [
-    L.github && `<a class="btn primary" href="${esc(L.github)}" ${ext}>${icons.github}GitHub</a>`,
-    L.linkedin && `<a class="btn" href="${esc(L.linkedin)}" ${ext}>${icons.linkedin}LinkedIn</a>`,
-    L.resume && `<a class="btn" href="${esc(L.resume)}" ${ext}>${icons.file}Résumé</a>`,
-    primaryEmail && `<a class="btn" href="mailto:${esc(primaryEmail.address)}">${icons.mail}Email</a>`
+    L.github && `<a href="${esc(L.github)}" ${ext}>${icons.github}GitHub</a>`,
+    L.linkedin && `<a href="${esc(L.linkedin)}" ${ext}>${icons.linkedin}LinkedIn</a>`,
+    L.resume && `<a href="${esc(L.resume)}" ${ext}>${icons.file}Résumé</a>`,
+    primaryEmail && `<a href="mailto:${esc(primaryEmail.address)}">${icons.mail}Email</a>`
   ].filter(Boolean).join("");
 
   /* ----- About + stats ----- */
@@ -49,27 +49,25 @@
   /* ----- Experience ----- */
   hideIfEmpty("experience", S.experience);
   $("experienceList").innerHTML = (S.experience || []).map((j) => `
-    <li class="job reveal">
-      <div class="job-head">
-        <div>
-          <h3>${esc(j.role)}</h3>
-          <div class="company"><strong>${esc(j.company)}</strong>${j.location ? ` · ${esc(j.location)}` : ""}</div>
-        </div>
-        <span class="period">${esc(j.period)}</span>
+    <li class="row reveal">
+      <span class="period">${esc(j.period)}</span>
+      <div>
+        <h3>${esc(j.role)} · ${esc(j.company)}</h3>
+        ${j.location ? `<div class="where">${esc(j.location)}</div>` : ""}
+        ${j.summary ? `<p class="summary">${esc(j.summary)}</p>` : ""}
+        ${j.points && j.points.length ? `<ul>${j.points.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>` : ""}
+        ${tags(j.tags)}
       </div>
-      ${j.points && j.points.length ? `<ul>${j.points.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>` : ""}
-      ${tags(j.tags, "accent")}
     </li>`).join("");
 
   /* ----- Projects ----- */
   $("projectList").innerHTML = (S.projects || []).map((p) => `
-    <article class="card reveal${p.highlights && p.highlights.length ? " wide" : ""}">
-      ${p.status ? `<span class="status"><i></i>${esc(p.status)}</span>` : ""}
-      <h3>${esc(p.title)}</h3>
+    <article class="card reveal">
+      <h3>${esc(p.title)}${p.status ? ` <span class="status">${esc(p.status)}</span>` : ""}</h3>
       ${p.subtitle ? `<div class="sub">${esc(p.subtitle)}</div>` : ""}
-      <p>${esc(p.description)}</p>
+      ${[].concat(p.description || []).map((d) => `<p>${esc(d)}</p>`).join("")}
       ${p.highlights && p.highlights.length ? `<ul class="highlights">${p.highlights.map((h) => `<li>${esc(h)}</li>`).join("")}</ul>` : ""}
-      ${tags(p.tags, "accent")}
+      ${tags(p.tags)}
       ${p.repo || p.demo ? `<div class="card-links">
         ${p.repo ? `<a href="${esc(p.repo)}" ${ext}>View code →</a>` : ""}
         ${p.demo ? `<a href="${esc(p.demo)}" ${ext}>Live demo →</a>` : ""}
@@ -110,13 +108,14 @@
   /* ----- Education ----- */
   hideIfEmpty("education", S.education);
   $("educationList").innerHTML = (S.education || []).map((e) => `
-    <div class="edu-item reveal">
-      <h3>${esc(e.degree)}</h3>
-      <div class="school">${esc(e.school)}</div>
-      ${e.location ? `<div class="loc">${esc(e.location)}</div>` : ""}
+    <li class="row reveal">
       <span class="period">${esc(e.period)}</span>
-      ${e.details ? `<div class="details">${esc(e.details)}</div>` : ""}
-    </div>`).join("");
+      <div>
+        <h3>${esc(e.degree)}</h3>
+        <div class="where">${esc(e.school)}${e.location ? ` · ${esc(e.location)}` : ""}</div>
+        ${e.details ? `<p class="details">${esc(e.details)}</p>` : ""}
+      </div>
+    </li>`).join("");
 
   /* ----- Contact ----- */
   const handle = (url) => url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
@@ -128,25 +127,6 @@
   ].filter(Boolean).join("");
 
   $("footer").textContent = `© ${new Date().getFullYear()} ${S.name}`;
-
-  /* ----- Theme toggle ----- */
-  const root = document.documentElement;
-  $("themeBtn").addEventListener("click", () => {
-    const isDark = root.dataset.theme
-      ? root.dataset.theme === "dark"
-      : matchMedia("(prefers-color-scheme: dark)").matches;
-    root.dataset.theme = isDark ? "light" : "dark";
-    try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
-  });
-
-  /* ----- Glow that follows the cursor on cards ----- */
-  document.addEventListener("pointermove", (e) => {
-    const card = e.target.closest && e.target.closest(".card, .stat, .edu-item, .contact-item");
-    if (!card) return;
-    const r = card.getBoundingClientRect();
-    card.style.setProperty("--mx", `${e.clientX - r.left}px`);
-    card.style.setProperty("--my", `${e.clientY - r.top}px`);
-  });
 
   /* ----- Reveal-on-scroll + active nav link ----- */
   if ("IntersectionObserver" in window) {

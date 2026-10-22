@@ -12,10 +12,10 @@ window.SITE = {
 
   /* ---------- Basics ---------- */
   name: "Dharanee Patel",
-  headline: "Software Engineer · AI/ML · Optimization",
+  headline: "Software engineer, machine learning and optimization",
   location: "College Station, TX",
   intro:
-    "MS Computer Science student at Texas A&M with 7+ years of industry experience building optimization engines, high-volume data pipelines, and applied machine-learning systems.",
+    "I'm a Master's student in Computer Science at Texas A&M. Before this I worked as a software developer on optimization, financial data systems and applied machine learning.",
 
   // Profile photo. Put your own photo at assets/img/profile.jpg and change this to "assets/img/profile.jpg".
   photo: "https://avatars.githubusercontent.com/u/30954207?v=4",
@@ -36,140 +36,153 @@ window.SITE = {
      Add, remove, or reorder chapters freely. A plain "text in quotes" also works (no label). */
   about: [
     {
-      label: "Where it started",
-      text: "I've always been drawn to the gap between a messy real-world problem and a clean system that actually solves it. That curiosity took shape while I studied Computer Engineering at L. D. College of Engineering in Ahmedabad, and it has been the thread through everything I've built since."
+      label: "Fxis.ai",
+      text: "After my Computer Engineering degree at L. D. College of Engineering, I started out building backend services and working with clients on machine-learning and computer-vision projects, mostly turning scanned documents into structured data. Working with clients early on taught me to pin down the actual problem before writing code."
     },
     {
-      label: "Learning to build · Fxis.ai",
-      text: "My first role put me right in that gap. I built backend services in a microservices architecture and worked directly with clients to understand what they really needed, then delivered machine-learning and computer-vision solutions that turned scanned documents and images into usable data. It taught me that good engineering starts with listening, and it gave me my first taste of what ML can do in the real world."
+      label: "Angel One",
+      text: "I then moved into fintech, working with analysts on quantitative investing. I rebuilt our financial time-series pipelines to run faster and worked on the tools we used for backtesting, portfolio evaluation and live execution."
     },
     {
-      label: "Raising the stakes · Angel One",
-      text: "At Angel One, the problems got bigger and the stakes got real. For more than three years I worked alongside financial analysts on quantitative investing. I re-architected high-volume time-series pipelines to run about 40% faster, and I built the systems behind strategy backtesting, portfolio evaluation, and live execution. I learned to write software where both speed and correctness matter, and to turn analysis into tools people rely on to make decisions."
+      label: "IBM",
+      text: "At IBM I worked on a CPLEX-based optimization engine for asset investment planning. A lot of the work was figuring out why a model had no feasible solution and fixing the cause, which taught me to reason carefully about how a system behaves rather than just trying things."
     },
     {
-      label: "From data to decisions · IBM",
-      text: "At IBM I moved from analyzing data to making decisions with it. I owned the CPLEX-based optimization engine behind enterprise asset investment planning. That meant MILP and constraint models, where a plan either holds together or it doesn't. By tracking down constraint conflicts and production edge cases, I raised average solution feasibility from about 60% to 90%, and I learned to reason about systems rigorously, not just empirically."
+      label: "Texas A&M",
+      text: "I'm now doing a Master's in Computer Science with a focus on AI and information retrieval. This semester I'm working on tool retrieval for LLM agents and on detecting AI-generated receipts."
     },
     {
-      label: "The next step · Texas A&M",
-      text: "Across seven years, one pattern kept repeating: the most valuable systems pair solid engineering with models that learn from data. That's what brought me to Texas A&M for a Master's in Computer Science, focused on Artificial Intelligence and Information Retrieval. I'm already building in that direction, for example with a retrieval-augmented research assistant that answers financial questions from earnings reports and cites its sources."
-    },
-    {
-      label: "Where I'm headed",
-      text: "I want to build AI systems people can trust in high-stakes settings, combining LLMs and retrieval, machine learning, and the rigor of optimization. I'm most excited by applied AI and ML engineering work, where ideas from research become reliable products that real people depend on."
+      label: "Next",
+      text: "I'm looking for applied machine learning and software engineering roles where I can keep working on retrieval, ML and optimization problems."
     }
   ],
 
-  // Headline numbers shown under the About text. Delete this list (or leave it empty []) to hide them.
-  stats: [
-    { value: "7+",   label: "years in industry" },
-    { value: "60→90%", label: "optimization feasibility at IBM" },
-    { value: "~40%", label: "faster data pipelines at Angel One" },
-    { value: "85%+", label: "OCR character accuracy" }
-  ],
+  // Headline numbers shown under the About text. Leave this list empty [] to hide them.
+  stats: [],
 
-  /* ---------- Experience (newest first) ---------- */
+  /* ---------- Experience (newest first) ----------
+     summary: optional short paragraph about the role, shown above the bullets. */
   experience: [
     {
       role: "Senior Software Developer",
       company: "IBM",
       location: "Gandhinagar, India",
       period: "Jun 2025 – Aug 2026",
+      summary:
+        "I worked on IBM's enterprise asset investment planning product, which helps organizations plan where to spend on their physical assets over time while staying within budgets and other limits. My part was the optimization engine underneath it, built on IBM CPLEX.",
       points: [
-        "Owned development and enhancement of the IBM CPLEX-based optimization engine for enterprise asset investment planning, working with MILP and constraint-based optimization.",
-        "Improved average solution feasibility from ~60% to ~90% by diagnosing constraint conflicts, production edge cases, and scenario-planning inconsistencies.",
-        "Drove design and implementation of scalable optimization capabilities through continuous planning and strategy constraint management, translating business requirements into production features."
+        "Worked on the engine's MILP and constraint models, which turn a customer's assets, budgets and planning rules into an investment plan.",
+        "Spent much of my time on plans that came back infeasible. I traced them to conflicting constraints, edge cases in production data, or inconsistencies between planning scenarios, and fixed the underlying cause, so the engine produced usable plans far more often.",
+        "Designed and built continuous-planning and strategy-constraint features, taking them from requirements through to implementation.",
+        "Led technical discovery sessions with customers to understand what they needed before we designed features."
       ],
-      tags: ["CPLEX", "MILP", "Constraint Optimization"]
+      tags: ["IBM CPLEX", "MILP", "Constraint Optimization"]
     },
     {
       role: "Software Developer",
       company: "Angel One",
       location: "Mumbai, India",
       period: "Dec 2021 – May 2025",
+      summary:
+        "Angel One is a retail brokerage in India. I worked alongside financial analysts on quantitative investing, building the software that took their strategies from research to live trading.",
       points: [
-        "Architected and streamlined high-volume financial time-series data pipelines, reducing execution time by ~40% and enabling high-performance quantitative analytics.",
-        "Collaborated with financial analysts to translate complex investment requirements into portfolio management systems and algorithmic trading strategies.",
-        "Built end-to-end systems for strategy backtesting, portfolio evaluation, and live execution of investments.",
-        "Designed custom dashboards and interactive data tools that helped stakeholders evaluate strategy performance and make faster, data-driven decisions."
+        "Reworked the time-series pipelines that prepared market data for analysis, so they ran considerably faster on large volumes of data.",
+        "Built the systems we used to backtest strategies, evaluate portfolios and execute investments live.",
+        "Worked with analysts to turn investment requirements into portfolio management tools and algorithmic trading strategies.",
+        "Built dashboards and data tools so the team could see how strategies were performing and compare them."
       ],
-      tags: ["Python", "Time-Series", "Backtesting", "Dashboards"]
+      tags: ["Python", "Time-Series", "Backtesting", "Data Pipelines", "Dashboards"]
     },
     {
       role: "Software Developer",
       company: "Fxis.ai",
       location: "Ahmedabad, India",
       period: "Jul 2019 – Nov 2021",
+      summary:
+        "My first job out of university. I worked on client projects that mixed backend engineering with applied machine learning, and spent a lot of time with clients working out what they needed.",
       points: [
-        "Led development of distributed backend services and client-facing features in a microservices architecture using Python and REST APIs.",
-        "Worked directly with clients to deliver machine-learning and computer-vision solutions for document digitization, text processing, and image analysis.",
-        "Prototyped and benchmarked an H+Tree indexing structure, comparing its performance against traditional B+Tree approaches."
+        "Built backend services and client-facing features as Python microservices with REST APIs.",
+        "Worked on document digitization, text processing and image analysis projects, turning client requirements into machine-learning and computer-vision solutions.",
+        "Led a small website development team and worked on the React and HTML/CSS front end myself.",
+        "Prototyped an H+Tree index and ran experiments comparing it with a standard B+Tree."
       ],
-      tags: ["Python", "Microservices", "REST", "Computer Vision"]
+      tags: ["Python", "Microservices", "REST", "Computer Vision", "React"]
     }
   ],
 
   /* ---------- Projects ----------
+     description: one paragraph in quotes, or several as a list [ "...", "..." ].
      repo / demo: leave "" if there's no link.
-     status:     optional badge, e.g. "In progress". Remove it once the project is done.
-     highlights: optional bullet points shown under the description.
-                 Only add numbers you have actually measured.            */
+     status:     optional label, e.g. "In progress". Remove it once the project is done.
+     highlights: optional bullet points shown under the description.        */
   projects: [
     {
-      title: "ToolScout: Tool Retrieval & Recommendation for AI Agents",
-      subtitle: "Texas A&M · CSCE 670 · Fall 2026",
+      title: "ToolScout: tool retrieval for AI agents",
+      subtitle: "Team project · Texas A&M, CSCE 670 (Information Storage & Retrieval) · Fall 2026",
       status: "In progress",
-      description:
-        "A search engine that hands an LLM agent the top-k tools it needs from a catalog of 2,000+ MCP and API tools, instead of stuffing every tool into the prompt.",
+      description: [
+        "LLM agents can now reach a very large number of tools through MCP servers and APIs. Putting every tool description into the prompt is expensive, and it makes it harder for the model to pick the right one.",
+        "ToolScout is a search engine for this. Given the task an agent is working on, it returns the handful of tools it is most likely to need."
+      ],
       highlights: [
-        "Hybrid retrieval: BM25 + dense embedding search over LLM-enriched tool descriptions, reranked with a cross-encoder.",
-        "Tool co-usage graph mined from agent runs, powering PageRank scores, item-based collaborative filtering, and SASRec next-tool prediction.",
-        "LambdaMART learning-to-rank model trained on labels from successful and failed agent runs, with ablations per signal.",
-        "Served as an MCP server (find_tools) behind open-weight Qwen3 agents on vLLM (TAMU HPC), evaluated on LiveMCPBench."
+        "Retrieval combines BM25 and dense embedding search over tool descriptions that an LLM has rewritten to be clearer, followed by a cross-encoder reranker.",
+        "A graph of which tools get used together in agent runs feeds PageRank scores, collaborative filtering and next-tool prediction, so it can suggest the tool an agent will need next.",
+        "A LambdaMART learning-to-rank model, trained on successful and failed agent runs, combines these signals into one ranking.",
+        "The plan is to serve it as an MCP server (find_tools) for open-weight Qwen3 agents running on vLLM on TAMU's HPC cluster.",
+        "We'll compare it with embedding-only retrieval, and measure agent task success and prompt size on LiveMCPBench."
       ],
       tags: ["Python", "PyTorch", "LightGBM", "Qdrant", "vLLM", "MCP"],
       repo: "",
       demo: ""
     },
     {
-      title: "AI-Generated Receipt Fraud Detector",
+      title: "Detecting AI-generated receipts",
       subtitle: "Course project · Fall 2026",
       status: "In progress",
-      description:
-        "A two-branch detector that flags AI-generated and AI-edited receipts by fusing image forensics with OCR-based consistency checks.",
+      description: [
+        "Image models can now produce convincing fake receipts, and editing a real one is easy. This project tries to catch both.",
+        "The detector has two parts. One looks for traces that generation or editing leaves in the image. The other reads the receipt with OCR and checks whether the items, totals and tax actually add up. A receipt can look perfect and still have numbers that don't work, or have correct numbers in an image that was clearly made by a model."
+      ],
       highlights: [
-        "Fine-tuned vision transformer (ConvNeXt / ViT) with frequency features, fused with OCR arithmetic and tax-consistency checks.",
-        "Robustness test set built by printing, photographing, and compressing receipts, plus recapture augmentation for real phone uploads.",
-        "Benchmarked against TruFor, DocTamper, and a GPT-4o judge, including generalization to unseen image generators.",
-        "Fairness checks across US, Indian GST, and handwritten receipt styles, with a plain-language reason for every flag."
+        "Image side: a fine-tuned ConvNeXt / ViT model with frequency-domain features.",
+        "Text side: PaddleOCR, followed by arithmetic and tax-consistency checks.",
+        "A test set of receipts that were printed, photographed and compressed, plus recapture augmentation in training, so it holds up on real phone photos and not just clean files.",
+        "Comparisons with TruFor, DocTamper and a GPT-4o judge, including on image generators the model never saw in training.",
+        "Checks across US, Indian GST and handwritten receipt styles, and a plain-language reason for every receipt it flags."
       ],
       tags: ["Python", "PyTorch", "ConvNeXt/ViT", "PaddleOCR", "scikit-learn"],
       repo: "",
       demo: ""
     },
     {
-      title: "LLM-Powered Financial Research Assistant",
-      description:
-        "A retrieval-augmented generation (RAG) pipeline that answers financial research questions from earnings reports, 10-Ks, and transcripts, with cited sources. Covers document chunking, embeddings, vector search, and grounded answer generation behind a Streamlit UI.",
-      tags: ["RAG", "LLMs", "ChromaDB", "Embeddings", "Streamlit"],
+      title: "Financial research assistant",
+      description: [
+        "A tool for asking questions about company filings. You upload 10-Ks, 10-Qs, earnings call transcripts or investor decks, ask a question in plain English, and get an answer along with the passages it came from."
+      ],
+      highlights: [
+        "Text is extracted from PDFs, split into overlapping chunks, and embedded with Voyage AI's finance-tuned model.",
+        "Chunks are stored in a local ChromaDB vector store, and the most relevant ones are passed to Claude to write the answer.",
+        "Each answer names the document and passage it drew from, so it can be checked against the source.",
+        "Streamlit front end, a command-line tool for loading a folder of documents, and unit tests for the chunking step."
+      ],
+      tags: ["RAG", "Claude API", "Voyage AI", "ChromaDB", "Streamlit"],
       repo: "https://github.com/dharaneepatel15/financial-research-assistant",
       demo: ""
     },
     {
-      title: "Maize Prediction & Breeding Analytics",
+      title: "Maize yield prediction",
       subtitle: "AggieTech Hackathon · Texas A&M",
       description:
-        "Worked in a team to analyze genomic, phenotype, and environmental data to predict outcomes for maize breeding programs.",
+        "Team project. We worked with genomic, phenotype and environmental data to predict outcomes for maize breeding programs.",
       tags: ["Machine Learning", "Genomics", "Data Analysis"],
       repo: "",
       demo: ""
     },
     {
-      title: "OCR for Historical Manuscript Digitization",
+      title: "OCR for historical manuscripts",
       subtitle: "Industry team project",
       description:
-        "Evaluated CNN-LSTM, attention-based, and ensemble deep-learning approaches for handwritten text recognition, using data augmentation to reach over 85% character recognition accuracy.",
+        "A project on reading handwritten historical manuscripts. We compared CNN-LSTM, attention-based and ensemble models for handwritten text recognition, and used data augmentation to make the models more accurate on varied handwriting.",
       tags: ["Deep Learning", "OCR", "CNN-LSTM", "PyTorch"],
       repo: "",
       demo: ""
@@ -179,11 +192,11 @@ window.SITE = {
 
   /* ---------- Skills ---------- */
   skills: [
-    { group: "AI & Machine Learning", items: ["Scikit-learn", "PyTorch", "TensorFlow", "Keras", "Computer Vision", "OCR"] },
-    { group: "LLMs & Gen AI",         items: ["RAG", "Prompt Engineering", "Hugging Face Transformers", "LangChain", "FAISS", "OpenAI API"] },
-    { group: "Languages & Tools",     items: ["Python", "SQL", "Flask", "Django REST Framework", "Streamlit", "AWS", "Docker", "Linux"] },
-    { group: "Data Science",          items: ["NumPy", "Pandas", "OpenCV", "Matplotlib", "Time-Series Analysis", "Statistical Modeling"] },
-    { group: "Optimization",          items: ["IBM CPLEX", "MILP", "Constraint Programming"] }
+    { group: "Machine learning",  items: ["PyTorch", "Scikit-learn", "TensorFlow", "Keras", "Computer Vision", "OCR", "NLP"] },
+    { group: "LLMs & retrieval",  items: ["RAG", "Embeddings", "Vector Search", "LangChain", "LangGraph", "MCP", "Hugging Face Transformers", "FAISS"] },
+    { group: "Languages & tools", items: ["Python", "SQL", "Flask", "Django REST Framework", "React", "Streamlit", "Git", "Docker", "AWS", "Linux"] },
+    { group: "Data",              items: ["NumPy", "Pandas", "OpenCV", "MySQL", "MongoDB", "Time-Series Analysis", "Statistical Modeling"] },
+    { group: "Optimization",      items: ["IBM CPLEX", "MILP", "Constraint Programming"] }
   ],
 
   /* ---------- Education ---------- */
@@ -193,7 +206,7 @@ window.SITE = {
       school: "Texas A&M University",
       location: "College Station, TX",
       period: "Expected May 2028",
-      details: "Coursework: Artificial Intelligence, Information Storage & Retrieval"
+      details: "Coursework: Artificial Intelligence, Information Storage & Retrieval, Analysis of Algorithms"
     },
     {
       degree: "Bachelor of Engineering in Computer Engineering",
@@ -206,5 +219,5 @@ window.SITE = {
 
   /* ---------- Contact section ---------- */
   contactText:
-    "I'm always happy to connect about software engineering, machine learning, optimization, or interesting problems in general. Feel free to reach out."
+    "Email is the best way to reach me. I'm happy to talk about software engineering, machine learning or optimization work."
 };
