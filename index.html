@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dharanee Patel · Portfolio</title>
-  <meta name="description" content="Dharanee Patel: software engineer working on machine learning, optimization, and data systems. MS Computer Science at Texas A&M University.">
+  <meta name="description" content="Dharanee Patel: software engineer working on applied AI, agents, and computer vision. MS Computer Science at Texas A&M University.">
   <meta property="og:title" content="Dharanee Patel · Portfolio">
-  <meta property="og:description" content="Software engineer working on machine learning, optimization, and data systems.">
+  <meta property="og:description" content="Software engineer working on applied AI, agents, and computer vision.">
   <meta name="theme-color" content="#f3f5fb">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230a0e1a'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='700' font-size='26' fill='%23c7d2fe'>DP</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,6 +28,7 @@
 
       <nav class="nav-links" aria-label="Sections">
         <a href="#about">About</a>
+        <a href="#interests">Interests</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
@@ -47,6 +48,12 @@
         <div class="stats" id="stats"></div>
       </section>
 
+      <section id="interests">
+        <h2 class="section-title">Areas of interest</h2>
+        <p class="section-note" id="interestsNote"></p>
+        <div class="interests" id="interestList"></div>
+      </section>
+
       <section id="experience">
         <h2 class="section-title">Experience</h2>
         <ol class="rows" id="experienceList"></ol>
@@ -55,6 +62,10 @@
       <section id="projects">
         <h2 class="section-title">Projects</h2>
         <div class="projects" id="projectList"></div>
+        <div id="otherProjects">
+          <h3 class="subhead">Additional project</h3>
+          <div class="projects" id="otherProjectList"></div>
+        </div>
         <div id="githubBlock" hidden>
           <h3 class="subhead">More on GitHub</h3>
           <div class="projects small" id="githubList"></div>

@@ -60,19 +60,36 @@
       </div>
     </li>`).join("");
 
+  /* ----- Areas of interest ----- */
+  hideIfEmpty("interests", S.interests);
+  if (S.interestsNote) $("interestsNote").textContent = S.interestsNote; else $("interestsNote").remove();
+  $("interestList").innerHTML = (S.interests || []).map((i) => `
+    <div class="interest reveal"><h3>${esc(i.title)}</h3><p>${esc(i.text)}</p></div>`).join("");
+
   /* ----- Projects ----- */
-  $("projectList").innerHTML = (S.projects || []).map((p) => `
+  const list = (items) => `<ul class="highlights">${items.map((h) => `<li>${esc(h)}</li>`).join("")}</ul>`;
+  const project = (p) => `
     <article class="card reveal">
       <h3>${esc(p.title)}${p.status ? ` <span class="status">${esc(p.status)}</span>` : ""}</h3>
       ${p.subtitle ? `<div class="sub">${esc(p.subtitle)}</div>` : ""}
       ${[].concat(p.description || []).map((d) => `<p>${esc(d)}</p>`).join("")}
-      ${p.highlights && p.highlights.length ? `<ul class="highlights">${p.highlights.map((h) => `<li>${esc(h)}</li>`).join("")}</ul>` : ""}
+      ${p.highlights && p.highlights.length ? list(p.highlights) : ""}
+      ${(p.details || []).map((d) => `
+        <div class="detail">
+          <h4>${esc(d.label)}</h4>
+          ${[].concat(d.text || []).map((t) => `<p>${esc(t)}</p>`).join("")}
+          ${d.items && d.items.length ? list(d.items) : ""}
+        </div>`).join("")}
       ${tags(p.tags)}
       ${p.repo || p.demo ? `<div class="card-links">
         ${p.repo ? `<a href="${esc(p.repo)}" ${ext}>View code →</a>` : ""}
         ${p.demo ? `<a href="${esc(p.demo)}" ${ext}>Live demo →</a>` : ""}
       </div>` : ""}
-    </article>`).join("");
+    </article>`;
+  $("projectList").innerHTML = (S.projects || []).map(project).join("");
+  if (S.otherProjects && S.otherProjects.length) {
+    $("otherProjectList").innerHTML = S.otherProjects.map(project).join("");
+  } else $("otherProjects").remove();
 
   if (S.showGithubRepos && S.githubUser) {
     const featured = new Set((S.projects || []).map((p) => (p.repo || "").toLowerCase().replace(/\/$/, "")));
