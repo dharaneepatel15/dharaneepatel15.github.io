@@ -68,24 +68,30 @@
 
   /* ----- Projects ----- */
   const list = (items) => `<ul class="highlights">${items.map((h) => `<li>${esc(h)}</li>`).join("")}</ul>`;
-  const project = (p) => `
-    <article class="card reveal">
-      <h3>${esc(p.title)}${p.status ? ` <span class="status">${esc(p.status)}</span>` : ""}</h3>
-      ${p.subtitle ? `<div class="sub">${esc(p.subtitle)}</div>` : ""}
-      ${[].concat(p.description || []).map((d) => `<p>${esc(d)}</p>`).join("")}
+  const project = (p) => {
+    const body = `
       ${p.highlights && p.highlights.length ? list(p.highlights) : ""}
       ${(p.details || []).map((d) => `
         <div class="detail">
           <h4>${esc(d.label)}</h4>
           ${[].concat(d.text || []).map((t) => `<p>${esc(t)}</p>`).join("")}
           ${d.items && d.items.length ? list(d.items) : ""}
-        </div>`).join("")}
+        </div>`).join("")}`;
+    return `
+    <article class="card reveal">
+      <h3>${esc(p.title)}${p.status ? ` <span class="status">${esc(p.status)}</span>` : ""}</h3>
+      ${p.subtitle ? `<div class="sub">${esc(p.subtitle)}</div>` : ""}
+      ${[].concat(p.description || []).map((d) => `<p>${esc(d)}</p>`).join("")}
+      ${p.collapsed && body.trim()
+        ? `<details class="more"><summary><span class="when-closed">Show details</span><span class="when-open">Hide details</span></summary>${body}</details>`
+        : body}
       ${tags(p.tags)}
       ${p.repo || p.demo ? `<div class="card-links">
         ${p.repo ? `<a href="${esc(p.repo)}" ${ext}>View code →</a>` : ""}
         ${p.demo ? `<a href="${esc(p.demo)}" ${ext}>Live demo →</a>` : ""}
       </div>` : ""}
     </article>`;
+  };
   $("projectList").innerHTML = (S.projects || []).map(project).join("");
   if (S.otherProjects && S.otherProjects.length) {
     $("otherProjectList").innerHTML = S.otherProjects.map(project).join("");

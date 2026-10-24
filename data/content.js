@@ -36,20 +36,20 @@ window.SITE = {
      Add, remove, or reorder chapters freely. A plain "text in quotes" also works (no label). */
   about: [
     {
-      label: "Fxis.ai",
-      text: "I began in backend engineering and applied machine learning, building Python services and working with clients on document digitization, text processing, and image analysis. That experience taught me to clarify the problem and user requirements before choosing a technical approach."
-    },
-    {
-      label: "Angel One",
-      text: "In fintech, I worked with financial analysts to turn investment requirements into data pipelines, backtesting systems, portfolio evaluation tools, and live execution software. This strengthened my understanding of data-intensive applications and the importance of performance, maintainability, and clear analytical outputs."
+      label: "Texas A&M",
+      text: "I'm now deepening my AI knowledge through graduate study and hands-on projects involving tool retrieval for LLM agents and detection of AI-generated or edited receipts. These projects let me explore how model behavior, retrieval, evaluation, and software design affect the reliability of a complete system."
     },
     {
       label: "IBM",
       text: "At IBM, I developed CPLEX-based optimization capabilities for enterprise asset investment planning. Investigating infeasible solutions required tracing interactions between constraints, production data, and planning scenarios. I also led customer technical discovery sessions, connecting business requirements with engineering decisions."
     },
     {
-      label: "Texas A&M",
-      text: "I'm now deepening my AI knowledge through graduate study and hands-on projects involving tool retrieval for LLM agents and detection of AI-generated or edited receipts. These projects let me explore how model behavior, retrieval, evaluation, and software design affect the reliability of a complete system."
+      label: "Angel One",
+      text: "In fintech, I worked with financial analysts to turn investment requirements into data pipelines, backtesting systems, portfolio evaluation tools, and live execution software. This strengthened my understanding of data-intensive applications and the importance of performance, maintainability, and clear analytical outputs."
+    },
+    {
+      label: "Fxis.ai",
+      text: "I began in backend engineering and applied machine learning, building Python services and working with clients on document digitization, text processing, and image analysis. That experience taught me to clarify the problem and user requirements before choosing a technical approach."
     },
     {
       label: "Direction",
@@ -135,6 +135,7 @@ window.SITE = {
      description: the opening paragraph (or a list of paragraphs).
      details:     labeled blocks, each with text and/or a list of items.
      status:      optional label, e.g. "In progress". Remove it once the project is done.
+     collapsed:   true hides the details behind a "Show details" toggle.
      repo / demo: leave "" if there's no link.
      Only describe work that is actually done as done; put the rest under "Planned".   */
   projects: [
@@ -169,6 +170,7 @@ window.SITE = {
       title: "ToolScout",
       subtitle: "Team course project · Texas A&M, CSCE 670 · Fall 2026",
       status: "In progress",
+      collapsed: true,
       description:
         "How can an LLM agent find the tools it needs without loading an entire tool catalog into its prompt? ToolScout is a course project exploring retrieval and ranking for agent tool selection.",
       details: [
@@ -207,6 +209,7 @@ window.SITE = {
       title: "AI-Generated Receipt Fraud Detector",
       subtitle: "Course project · Fall 2026",
       status: "In progress",
+      collapsed: true,
       description:
         "A course project exploring whether visual forensics and OCR-based consistency checks can help identify AI-generated or edited receipts.",
       details: [

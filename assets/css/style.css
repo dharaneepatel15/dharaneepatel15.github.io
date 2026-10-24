@@ -161,6 +161,21 @@ section { padding-bottom: 96px; }
 .highlights { margin: 10px 0 0 16px; color: var(--muted); font-size: 14.5px; }
 .highlights li + li { margin-top: 4px; }
 .highlights li::marker { color: var(--faint); }
+.more { margin-top: 10px; }
+.more summary {
+  display: inline-flex; align-items: center; gap: 6px; cursor: pointer; list-style: none;
+  font-size: 13.5px; font-weight: 500; color: var(--accent);
+}
+.more summary::-webkit-details-marker { display: none; }
+.more summary::after {
+  content: ""; width: 6px; height: 6px; margin-top: -3px;
+  border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg); transition: transform .2s;
+}
+.more[open] summary::after { transform: rotate(-135deg); margin-top: 3px; }
+.more summary:hover { text-decoration: underline; text-underline-offset: 3px; }
+.more .when-open, .more[open] .when-closed { display: none; }
+.more[open] .when-open { display: inline; }
 .detail { margin-top: 14px; }
 .detail h4 {
   font-size: 11.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--faint);
