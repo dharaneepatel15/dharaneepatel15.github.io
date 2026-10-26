@@ -79,17 +79,21 @@
         </div>`).join("")}`;
     return `
     <article class="card reveal">
-      <h3>${esc(p.title)}${p.status ? ` <span class="status">${esc(p.status)}</span>` : ""}</h3>
+      <div class="card-head">
+        <h3>${esc(p.title)}${p.status ? ` <span class="status">${esc(p.status)}</span>` : ""}</h3>
+        ${p.repo || p.demo ? `<div class="card-links">
+          ${p.repo ? `<a href="${esc(p.repo)}" ${ext} aria-label="View code for ${esc(p.title)} on GitHub">${icons.github}Code</a>` : ""}
+          ${p.demo ? `<a href="${esc(p.demo)}" ${ext}>Live demo ↗</a>` : ""}
+        </div>` : ""}
+      </div>
       ${p.subtitle ? `<div class="sub">${esc(p.subtitle)}</div>` : ""}
       ${[].concat(p.description || []).map((d) => `<p>${esc(d)}</p>`).join("")}
-      ${p.collapsed && body.trim()
-        ? `<details class="more"><summary><span class="when-closed">Show details</span><span class="when-open">Hide details</span></summary>${body}</details>`
-        : body}
       ${tags(p.tags)}
-      ${p.repo || p.demo ? `<div class="card-links">
-        ${p.repo ? `<a href="${esc(p.repo)}" ${ext}>View code →</a>` : ""}
-        ${p.demo ? `<a href="${esc(p.demo)}" ${ext}>Live demo →</a>` : ""}
-      </div>` : ""}
+      ${body.trim()
+        ? p.collapsed === false
+          ? `<div class="more-body">${body}</div>`
+          : `<details class="more"><summary><span class="when-closed">Show details</span><span class="when-open">Hide details</span></summary><div class="more-body">${body}</div></details>`
+        : ""}
     </article>`;
   };
   $("projectList").innerHTML = (S.projects || []).map(project).join("");

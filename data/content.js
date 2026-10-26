@@ -135,7 +135,7 @@ window.SITE = {
      description: the opening paragraph (or a list of paragraphs).
      details:     labeled blocks, each with text and/or a list of items.
      status:      optional label, e.g. "In progress". Remove it once the project is done.
-     collapsed:   true hides the details behind a "Show details" toggle.
+     Details are hidden behind a "Show details" toggle. Add collapsed: false to always show them.
      repo / demo: leave "" if there's no link.
      Only describe work that is actually done as done; put the rest under "Planned".   */
   projects: [
@@ -170,7 +170,6 @@ window.SITE = {
       title: "ToolScout",
       subtitle: "Team course project · Texas A&M, CSCE 670 · Fall 2026",
       status: "In progress",
-      collapsed: true,
       description:
         "How can an LLM agent find the tools it needs without loading an entire tool catalog into its prompt? ToolScout is a course project exploring retrieval and ranking for agent tool selection.",
       details: [
@@ -209,7 +208,6 @@ window.SITE = {
       title: "AI-Generated Receipt Fraud Detector",
       subtitle: "Course project · Fall 2026",
       status: "In progress",
-      collapsed: true,
       description:
         "A course project exploring whether visual forensics and OCR-based consistency checks can help identify AI-generated or edited receipts.",
       details: [
